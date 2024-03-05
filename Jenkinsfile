@@ -1,18 +1,18 @@
   pipeline {
       agent any
-      tools {
-  	    maven "MAVEN3"
-  	    jdk "OracleJDK8"
-  	}
+   //    tools {
+  	//     maven "MAVEN3"
+  	//     jdk "OracleJDK8"
+  	// }
 
       environment {
           registryCredential = 'ecr:us-east-2:awscreds'
-          clientRegistry = "951401132355.dkr.ecr.us-east-2.amazonaws.com/clients"
-          booksRegistry = "951401132355.dkr.ecr.us-east-2.amazonaws.com/books"
-          mainRegistry = "951401132355.dkr.ecr.us-east-2.amazonaws.com/main"
-          vprofileRegistry = "https://951401132355.dkr.ecr.us-east-2.amazonaws.com"
-          cluster = "vprofile"
-          service = "vprofileappsvc"
+          clientRegistry = "339712773002.dkr.ecr.us-east-1.amazonaws.com/clients"
+          booksRegistry = "339712773002.dkr.ecr.us-east-1.amazonaws.com/books"
+          mainRegistry = "339712773002.dkr.ecr.us-east-1.amazonaws.com/main"
+          vprofileRegistry = "https://339712773002.dkr.ecr.us-east-1.amazonaws.com"
+          // cluster = "vprofile"
+          // service = "vprofileappsvc"
       }
     stages {
       stage('Fetch code'){
