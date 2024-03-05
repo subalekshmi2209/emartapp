@@ -92,7 +92,7 @@
           }
    
 
-       stage('Build books Image) {
+       stage('Build books Image') {
           when { changeset "javaapi/*"}
          steps {
          
