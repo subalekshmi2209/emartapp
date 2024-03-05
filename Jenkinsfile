@@ -1,9 +1,9 @@
   pipeline {
       agent any
    //    tools {
-  	//     maven "MAVEN3"
-  	//     jdk "OracleJDK8"
-  	// }
+    //     maven "MAVEN3"
+    //     jdk "OracleJDK8"
+    // }
 
       environment {
           registryCredential = 'ecr:us-east-2:awscreds'
@@ -70,7 +70,7 @@
          steps {
          
            script {
-  		dockerImage = docker.build( clientRegistry + ":$BUILD_NUMBER", "./client/")
+      dockerImage = docker.build( clientRegistry + ":$BUILD_NUMBER", "./client/")
                   
                }
 
@@ -89,15 +89,15 @@
                 }
               }
             }
-
-
+          }
+   
 
        stage('Build books Image) {
           when { changeset "javaapi/*"}
          steps {
          
            script {
-  		dockerImage = docker.build( booksRegistry + ":$BUILD_NUMBER", "./javaapi/")
+      dockerImage = docker.build( booksRegistry + ":$BUILD_NUMBER", "./javaapi/")
                   
                }
 
@@ -116,14 +116,14 @@
                 }
               }
             }
-
+          }
 
        stage('Build Main Image') {
           when { changeset "nodeapi/*"}
          steps {
          
            script {
-  		dockerImage = docker.build( mainRegistry + ":$BUILD_NUMBER", "./nodeapi/")
+      dockerImage = docker.build( mainRegistry + ":$BUILD_NUMBER", "./nodeapi/")
                   
                }
 
