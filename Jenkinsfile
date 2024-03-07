@@ -90,20 +90,17 @@
               }
             }
           }
-   
+  
+stage('Build books Image') {
+    when { changeset "javaapi/*"}
+    steps {
+        script {
+            dockerImage = docker.build( booksRegistry + ":$BUILD_NUMBER", "./javaapi/")
+        }
+    }
+}
 
-       stage('Build books Image') {
-          when { changeset "javaapi/*"}
-         steps {
-         
-           script {
-      dockerImage = docker.build( booksRegistry + ":$BUILD_NUMBER", "./javaapi/")
-                  
-               }
 
-       }
-      
-      }
 
       stage('Deploy Book Image') {
       when { changeset "javaapi/*"}
